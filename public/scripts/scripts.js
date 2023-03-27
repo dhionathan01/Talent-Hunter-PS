@@ -25,7 +25,7 @@ const buttonEnviarHorario = () => {
                     renderMsg = `<div class="alert alert-danger">
                     <strong>Falha!</strong> A Data de Entrada Não pode ser maior que Saida.
                   </div>`; 
-                  renderHtml = j('#msg').append(renderMsg); 
+                  renderHtml = j('#msg').html(renderMsg); 
 
                     let horario_entrada = j('#horario_entrada').val('');
                     let horario_saida = j('#horario_saida').val('');
@@ -35,7 +35,7 @@ const buttonEnviarHorario = () => {
                         renderMsg = `<div class="alert alert-danger">
                             <strong>Falha!</strong> O Período não pode ultrapassar  24 horas.
                             </div>`; 
-                        renderHtml = j('#msg').append(renderMsg); 
+                        renderHtml = j('#msg').html(renderMsg); 
                     } else {
                         html = `
                             <div class="row">
@@ -45,9 +45,14 @@ const buttonEnviarHorario = () => {
                                 <div class="col-md-2">${objetoCalculo.diurno}H</div>
                                 <div class="col-md-2">${objetoCalculo.noturno}H</div>
                             </div>`;
-                        renderHtml = j('#registros_unitarios').append(html); 
+                        renderHtml = j('#registros_unitarios').append(html);
+                        renderMsg = `<div class="alert alert-success">
+                        <strong>Sucesso!</strong> Registro Inserido com Sucesso.
+                        </div>`; 
+                    renderHtml = j('#msg').html(renderMsg); 
                     }
                 }
+                // ajax para inserir no banco de dados
             }
         })
     })
